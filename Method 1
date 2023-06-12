@@ -1,0 +1,33 @@
+#include
+#include
+#include
+
+int convert(char hex[])
+{
+    int len = strlen(hex);
+    int decimal = 0, pos = 0;
+    
+    for(int i = len - 1; i >= 0; i--)
+    {
+        // if given index value is a digit (0 - 9)
+        if (hex[i] >= '0' && hex[i] <= '9') { // if character is in range '0' - '9' // can convert char value to its int value // by subtracting 48 (Refer Ascii table) as ASCII val 0 : 48 int digit = hex[i] - 48; decimal += digit * pow(16, pos); pos++; } // if given index is char in range [A, F] else if (hex[i] >= 'A' && hex[i] <= 'F') 
+        { 
+            // if character is in range 'A' - 'F' 
+            // can convert char value to its int value 
+            // by subtracting 55 (Refer Ascii table) as 
+            // ASCII val A : 65 and A must result 10 as value 
+            int digit = hex[i] - 55; 
+            decimal += digit * pow(16, pos); 
+            pos++; 
+        } 
+    } 
+    return decimal; 
+}
+int main()
+{
+char hex[20];
+scanf("%[^\n]", &hex);
+
+printf("%d",convert(hex));
+return 0;
+}
